@@ -46,8 +46,6 @@ app.post('/getMovieById/', (req, res) => {
         console.log(`Preseting movie id #${req.body.movie_id} - ${movie.name}`);
         res.status(200).json({"Selected Movie" : movie});
     }
-    // res.send(req.body.movie_id);
-
 });
 
 
