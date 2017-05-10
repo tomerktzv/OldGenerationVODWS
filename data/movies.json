@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "About Schmidt",
+    "year": 1993,
+    "genre": "Comedy",
+    "producer": "Alexander Payne"
+  },
+  {
+    "id": 2,
+    "name": "Gran Torino",
+    "year": 2008,
+    "genre": "Drama",
+    "producer": "Clint Eastwood"
+  },
+  {
+    "id": 3,
+    "name": "Tough Guys",
+    "year": 1986,
+    "genre": "Action",
+    "producer": "Jeff Kanew"
+  }
+]
