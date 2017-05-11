@@ -11,9 +11,14 @@ var oldGenVOD = oldVOD();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded( { extended: true }));
 
+
 app.all('*', (req, res, next) => {
     console.log('Request received');
     req.next();
+});
+
+app.get('/', (req, res) => {
+   res.sendfile(`index.html`);
 });
 
 app.get('/getAllMovies', (req, res) => {
