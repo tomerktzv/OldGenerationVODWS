@@ -2,10 +2,12 @@
 
 const bodyParser = require('body-parser'),
       express = require('express'),
-      data = require('./data/movies.json'),
+      // data = require('./data/movies.json'),
       port = process.env.PORT || 3000,
-      app = express();
+      app = express(),
+      oldVOD = require('./app/index.js');
 
+var oldGenVOD = oldVOD();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded( { extended: true }));
 
@@ -15,39 +17,43 @@ app.all('*', (req, res, next) => {
 });
 
 app.get('/getAllMovies', (req, res) => {
-    console.log(`Movies List: \n ${JSON.stringify(data, null, 2)}`);
-    res.json(data);
+    console.log(`Movies List: \n ${JSON.stringify(oldGenVOD.getAllMovies, null, 2)}`);
+    res.json(oldGenVOD.getAllMovies());
 });
 
 app.get('/getMovieByGenreDate/:genre/:year', (req, res) => {
-    let movie;
-    for (let i in data) {
-        if (data[i].genre == req.params.genre && data[i].year == req.params.year) {
-            movie = data[i];
-            console.log(`Selected Movie: ${JSON.stringify(data[i])}`);
-            res.status(200).json({"Selected Movie" : movie});
-        }
+    if (!oldGenVOD.getMovieByGenreDate(req.params.genre, req.params.year)) {
+        console.log(`Error! No ${req.params.genre} movie that was released on ${req.params.year} was found`);
+        res.status(200).json({err : `Error! No ${req.params.genre} movie that was released on ${req.params.year} was found`});
     }
-    if (!movie) {
-        console.log(`No movie matching genre ${req.params.genre} that was released on ${req.params.year} was found`);
-        res.status(200).json('No movie exists :(');
+    else {
+        console.log(`A movie was found`);
+        res.status(200).json(oldGenVOD.getMovieByGenreDate(req.params.genre, req.params.year));
     }
 });
 
 
 app.post('/getMovieById/', (req, res) => {
-    console.log(req.body.movie_id);
-    var movie = data[req.body.movie_id-1];
-    if (!movie) {
-        console.log(`No movie matching id #${req.body.movie_id} was found`);
-        res.status(200).json('No movie with this id exists :(');
+    if (!oldGenVOD.getMovieByID(req.body.movie_id)) {
+        console.log(`Error! No movie was found with id #${req.body.movie_id}`);
+        res.status(200).json({err : `Error! No movie was found with id #${req.body.movie_id}`});
     }
     else {
-        console.log(`Preseting movie id #${req.body.movie_id} - ${movie.name}`);
-        res.status(200).json({"Selected Movie" : movie});
+        console.log(`A movie was found`);
+        res.status(200).json(oldGenVOD.getMovieByID(req.body.movie_id));
     }
 });
 
+app.post('/getCastByMovieName/', (req, res) => {
+    if (!oldGenVOD.getCastByMovieName(req.body.movie_name)) {
+        console.log(`Error! No movie was found with id #${req.body.movie_name}`);
+        res.status(200).json({err : `Error! No movie was found with id #${req.body.movie_name}`});
+    }
+    else {
+        console.log(`A movie was found`);
+        res.status(200).json(oldGenVOD.getCastByMovieName(req.body.movie_name));
+    }
+});
 
 app.listen(port);
 console.log(`listening on port ${port}`);
