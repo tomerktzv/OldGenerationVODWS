@@ -19,7 +19,7 @@ app.all('*', (req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-   res.sendFile(`${__dirname}/index.html`);
+   res.sendFile(`index.html`);
 });
 
 app.get('/getAllMovies', (req, res) => {
