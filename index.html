@@ -4,11 +4,63 @@
     <meta charset="UTF-8">
     <title>Old Generation VOD</title>
     <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+    <!--<link rel="stylesheet" href="includes/styles.css">-->
     <link rel="stylesheet" href="extras/styles.css">
     <link rel="icon" href="imgs/oldicon.png">
+    <!--<link rel="icon" href="images/oldicon.png">-->
 </head>
 <main>
     <h1>V.O.D&nbsp; FOR&nbsp; THE&nbsp; OLDER&nbsp; GENERATION</h1>
+    <section>
+        <a target="_blank" href="https://oldvod.herokuapp.com/getAllMovies"><section>
+            <h2>Get All Movies (in JSON format using GET)</h2>
+            <!--<a target="_blank" href="https://oldvod.herokuapp.com/getAllMovies">https://oldvod.herokuapp.com/getAllMovies</a>-->
+        </section></a>
+        <a target="_blank" href="https://oldvod.herokuapp.com/getMovieByGenreDate/Genre/Year"><section>
+            <h2>Get A Movie By Genre And Year (using GET)</h2>
+        </section></a>
+        <section>
+            <h2>JSON Format Example</h2>
+            <p>{</p>
+            <p>&nbsp;&nbsp;&nbsp;id: 123,</p>
+            <p>&nbsp;&nbsp;&nbsp;name: "About Schmidt",</p>
+            <p>&nbsp;&nbsp;&nbsp;year: 1993,</p>
+            <p>&nbsp;&nbsp;&nbsp;genre: "Comedy",</p>
+            <p>&nbsp;&nbsp;&nbsp;producer: "Alexander Payne",</p>
+            <p>&nbsp;&nbsp;&nbsp;cast: [</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name: "Jack Nicholson",</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;role: "Warren Schmidt"</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name: "Kathy Bates",</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;role: "Roberta Herztel"</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name: "Hope Davis",</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;role: "Jeannie Schmidt"</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+            <p>&nbsp;&nbsp;&nbsp;]</p>
+            <p>}</p>
+        </section>
+    </section>
+    <section>
+        <a target="_blank" href="https://oldvod.herokuapp.com/getMovieById/"><section>
+            <h2>Get A Movie By ID (using POST)</h2>
+        </section></a>
+        <a target="_blank" href="https://oldvod.herokuapp.com/getCastByMovieName/"><section>
+            <h2>Get Cast List By Movie Name (using POST)</h2>
+        </section></a>
+        <section>
+            <h2>About this WS</h2>
+            <p>{</p>
+            <p>&nbsp;&nbsp;&nbsp;name: "Tomer Katzav",</p>
+            <p>&nbsp;&nbsp;&nbsp;age: 28</p>
+            <p>&nbsp;&nbsp;&nbsp;email: tomerktzv@gmail.com</p>
+            <p>&nbsp;&nbsp;&nbsp;subject: old-generation-vod</p>
+            <p>}</p>
+        </section>
+    </section>
 </main>
 <body>
 

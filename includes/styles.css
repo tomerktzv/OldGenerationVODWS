@@ -7,8 +7,11 @@ body {
     font-family: Helvetica, sans-serif;
     font-size: 100%;
     background: url('../imgs/oldpeople.jpg') no-repeat;
+    /*background: url('../images/oldpeople.jpg') no-repeat;*/
     background-size: 100%;
     padding-top: 1%;
+    padding-left: 1%;
+    padding-right: 1%;
 }
 
 header, nav, main, footer, aside, section, article, a {
@@ -24,4 +27,60 @@ h1 {
     font-size: 330%;
     font-family: 'Monoton', cursive;
     text-align: center;
+}
+
+h2 {
+    text-align: center;
+    font-size: 27px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    font-weight: bold;
+}
+
+section > section {
+    padding: 2px;
+}
+
+a > section, section > section {
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    color: #333333;
+    background: rgba(136, 136, 136, 0.4);
+    box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+
+a > section:active {
+    color:red;
+    box-shadow: 0 0 5px -1px rgba(0,0,0,0.6);
+}
+
+a > section:hover {
+    color: #e60000;
+    box-shadow: 0px 0px 5px 5px rgba(230,0,0,0.6);
+}
+
+main > section:nth-child(2) {
+    float: left;
+    width: 25%;
+}
+
+main > section:nth-child(3) {
+    float: right;
+    width: 25%;
+}
+
+main > section:nth-child(4) {
+    background: rgba(136, 136, 136, 0.4);
+    width: 25%;
+    clear: both;
+    border: 2px solid black;
+    color: #333333;
+    border-radius: 10px;
 }
