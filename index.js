@@ -10,8 +10,8 @@ const bodyParser = require('body-parser'),
 var oldGenVOD = oldVOD();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded( { extended: true }));
-app.use('/extras', express.static(__dirname) + '/includes');
-app.use('/imgs', express.static(__dirname) + '/images');
+app.use('/extras', express.static(__dirname + '/includes'));
+app.use('/imgs', express.static(__dirname + '/images'));
 
 app.all('*', (req, res, next) => {
     console.log('Request received');
@@ -19,7 +19,7 @@ app.all('*', (req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-   res.sendFile(`index.html`);
+   res.sendFile(`${__dirname}/index.html`);
 });
 
 app.get('/getAllMovies', (req, res) => {
