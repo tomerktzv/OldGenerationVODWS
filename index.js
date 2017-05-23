@@ -5,16 +5,31 @@ const bodyParser = require('body-parser'),
       // data = require('./data/movies.json'),
       port = process.env.PORT || 3000,
       app = express(),
+      // mongoose = require('mongoose'),
+      // consts = require('./consts'),
+      // Movie = require('./movie'),
+      newVOD = require('./mongoose_connection'),
       oldVOD = require('./app/index.js');
 
+var newOldGenVOD = newVOD();
 var oldGenVOD = oldVOD();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded( { extended: true }));
 app.use('/extras', express.static(__dirname + '/includes'));
 app.use('/imgs', express.static(__dirname + '/images'));
 
+
+//
+// conn.once(`open`, () => {
+//     Movie.find({}, (err, movie) => {
+//         if (err) console.log(`query error: ${err}`);
+//         console.log(movie);
+//         // mongoose.disconnect();
+//     });
+// });
+
 app.all('*', (req, res, next) => {
-    console.log('Request received');
+    console.log('==== Request received ====');
     req.next();
 });
 
@@ -22,43 +37,58 @@ app.get('/', (req, res) => {
    res.sendFile(`${__dirname}/index.html`);
 });
 
+
 app.get('/getAllMovies', (req, res) => {
-    console.log(`Movies List: \n ${JSON.stringify(oldGenVOD.getAllMovies, null, 2)}`);
-    res.json(oldGenVOD.getAllMovies());
+    newOldGenVOD.getAllMovies().then((result) => {
+        if (result.length !== 0) {
+            console.log(`==========\n${result}\n Received successfully from the database!\n==========`);
+            res.status(200).json(result);
+        }
+        else {
+            console.log(`==========\nFailed to retrieve data\n==========`);
+            res.status(200).json(`Failed to retrieve data`);
+        }
+    });
 });
 
 app.get('/getMovieByGenreDate/:genre/:year', (req, res) => {
-    if (!oldGenVOD.getMovieByGenreDate(req.params.genre, req.params.year)) {
-        console.log(`Error! No ${req.params.genre} movie that was released on ${req.params.year} was found`);
-        res.status(200).json({err : `Error! No ${req.params.genre} movie that was released on ${req.params.year} was found`});
-    }
-    else {
-        console.log(`A movie was found`);
-        res.status(200).json(oldGenVOD.getMovieByGenreDate(req.params.genre, req.params.year));
-    }
+    newOldGenVOD.getMovieByGenreDate(req.params.genre, req.params.year).then((result) => {
+        if (result.length !== 0) {
+            console.log(`==========\n${result}\n Received successfully from the database!\n==========`);
+            res.status(200).json(result);
+        }
+        else {
+            console.log(`==========\nFailed to retrieve data - No matching collections were found\n==========`);
+            res.status(200).json(`Failed to retrieve data - No matching collections were found`);
+        }
+    });
 });
 
 
 app.post('/getMovieById/', (req, res) => {
-    if (!oldGenVOD.getMovieByID(req.body.movie_id)) {
-        console.log(`Error! No movie was found with id #${req.body.movie_id}`);
-        res.status(200).json({err : `Error! No movie was found with id #${req.body.movie_id}`});
-    }
-    else {
-        console.log(`A movie was found`);
-        res.status(200).json(oldGenVOD.getMovieByID(req.body.movie_id));
-    }
+    newOldGenVOD.getMovieById(req.body.movie_id).then((result) => {
+        if (result.length !== 0) {
+            console.log(`==========\n${result}\n Received successfully from the database!\n==========`);
+            res.status(200).json(result);
+        }
+        else {
+            console.log(`==========\nFailed to retrieve data - No matching collections were found\n==========`);
+            res.status(200).json(`Failed to retrieve data - No matching collections were found`);
+        }
+    });
 });
 
 app.post('/getCastByMovieName/', (req, res) => {
-    if (!oldGenVOD.getCastByMovieName(req.body.movie_name)) {
-        console.log(`Error! No movie was found with id #${req.body.movie_name}`);
-        res.status(200).json({err : `Error! No movie was found with id #${req.body.movie_name}`});
-    }
-    else {
-        console.log(`A movie was found`);
-        res.status(200).json(oldGenVOD.getCastByMovieName(req.body.movie_name));
-    }
+    newOldGenVOD.getCastByMovieName(req.body.movie_name).then((result) => {
+        if (result.length !== 0) {
+            console.log(`==========\n${result}\n Received successfully from the database!\n==========`);
+            res.status(200).json(result);
+        }
+        else {
+            console.log(`==========\nFailed to retrieve data - No matching collections were found\n==========`);
+            res.status(200).json(`Failed to retrieve data - No matching collections were found`);
+        }
+    });
 });
 
 app.listen(port);

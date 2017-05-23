@@ -7,15 +7,15 @@
     "producer": "Alexander Payne",
     "cast" :[
       {
-        "name" : "Jack Nicholson",
+        "actor" : "Jack Nicholson",
         "role" : "Warren Schmidt"
       },
       {
-        "name" : "Kathy Bates",
+        "actor" : "Kathy Bates",
         "role" : "Roberta Herztel"
       },
       {
-        "name" : "Hope Davis",
+        "actor" : "Hope Davis",
         "role" : "Jeannie Schmidt"
       }
     ]
@@ -28,15 +28,15 @@
     "producer": "Clint Eastwood",
     "cast" :[
       {
-        "name" : "Clint Eastwood",
+        "actor" : "Clint Eastwood",
         "role" : "Walt Kowalski"
       },
       {
-        "name" : "Christopher Carley",
+        "actor" : "Christopher Carley",
         "role" : "Father Janovich"
       },
       {
-        "name" : "Bee Vang",
+        "actor" : "Bee Vang",
         "role" : "Thao"
       }
     ]
@@ -49,15 +49,15 @@
     "producer": "Jeff Kanew",
     "cast" :[
       {
-        "name" : "Burt Lancaster",
+        "actor" : "Burt Lancaster",
         "role" : "Harry Doyle"
       },
       {
-        "name" : "Kirk Douglas",
+        "actor" : "Kirk Douglas",
         "role" : "Archie Long"
       },
       {
-        "name" : "Charles Durning",
+        "actor" : "Charles Durning",
         "role" : "Deke Yablonski"
       }
     ]
