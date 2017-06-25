@@ -19,7 +19,6 @@ app.use('/extras', express.static(__dirname + '/includes'));
 app.use('/imgs', express.static(__dirname + '/images'));
 
 
-//
 // conn.once(`open`, () => {
 //     Movie.find({}, (err, movie) => {
 //         if (err) console.log(`query error: ${err}`);
@@ -27,6 +26,12 @@ app.use('/imgs', express.static(__dirname + '/images'));
 //         // mongoose.disconnect();
 //     });
 // });
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 app.all('*', (req, res, next) => {
     console.log('==== Request received ====');
